@@ -6,8 +6,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       lowercase: true,
       trim: true,
-      default: null,
     },
+    //accountId can be google Id, facebook Id, github Id etc.
     accountId: {
       type: String,
     },
@@ -21,6 +21,12 @@ const userSchema = new mongoose.Schema(
     provider: {
       type: String,
     },
+    // facebookId: {
+    //   type: String,
+    // },
+    // githubId: {
+    //   type: String,
+    // },
   },
   {
     timestamps: true,

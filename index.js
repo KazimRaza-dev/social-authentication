@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
 const session = require('express-session');
-const authRouter = require('./src/controllers/google-oauth');
+const authRouter = require('./src/controllers/google-auth');
+const facebookRouter = require('./src/controllers/facebook-auth');
+const githubRouter = require('./src/controllers/github-auth');
+const protectedRouter = require('./src/controllers/protected-route');
 const passport = require('passport');
 const mongoose = require('mongoose');
 
@@ -42,7 +45,10 @@ app.get('/', (req, res) => {
   res.render('auth');
 });
 
-app.use('/auth', authRouter);
+app.use('/auth/google', authRouter);
+app.use('/auth/facebook', facebookRouter);
+app.use('/auth/github', githubRouter);
+app.use('/protected', protectedRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log('App listening on port ' + port));
